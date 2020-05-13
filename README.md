@@ -1,20 +1,19 @@
 # Reading Time
 
-このReading Timeアプリは、スタッフのオススメの書籍を紹介するWebアプリケーションです。
+이 Reading Time 응용 프로그램은 직원의 추천 도서를 소개하는 Web 어플리케이션입니다.
 
-## インストール
 
-### 準備
 
-このアプリでは Java と[Maven](https://maven.apache.org/)が必要です。また、組込み Tomcat サーブレットコンテナを使用しています。Java と Maven がインストールされているかどうかを確認するには、ターミナルで以下のコマンドを実行して下さい：
+### 준비
 
+이 응용 프로그램은 Java와 [Maven] (https://maven.apache.org/)가 필요합니다. 또한 임베디드 Tomcat 서블릿 컨테이너를 사용하고 있습니다. Java와 Maven이 설치되어 있는지 확인하려면 터미널에서 다음 명령을 실행하십시오 :
 ```
 mvn --version
 ```
 
-### 起動
+### 시작
 
-アプリケーションを起動するには以下のコマンドを実行して下さい：
+응용 프로그램을 시작하려면 다음 명령을 실행하십시오 :
 
 ```
 mvn clean install
@@ -22,58 +21,23 @@ sh target/bin/webapp
 open http://localhost:8080
 ```
 
-テストを実行しないでインストールするには以下のコマンドを実行して下さい：
+테스트를 실행하지 않고 설치하려면 다음 명령을 실행하십시오 :
 
 ```
 mvn -B -DskipTests=true clean install
 ```
 
-ユニットテストを実行するには以下のコマンドを実行して下さい：
+단위 테스트를 실행하려면 다음 명령을 실행하십시오 :
 
 ```
 mvn clean test
 ```
 
-## Actions の設定
+## Actions 설정
 
-このプロジェクトでは 2 つのワークフローを実行します。
+이 프로젝트는 2 개의 워크 플로우를 실행합니다.
 
-1. フィーチャーブランチへの push のたびにビルド（コンパイル、ユニットテスト）の実行
-2. master へのマージのたびにビルド・Azure Web App へのデプロイ
+1. 피쳐 분기에 push 때마다 빌드 (컴파일 단위 테스트) 실행
+2. master로 병합 때마다 빌드 Azure Web App에 배포
 
-### デプロイする Azure Web App の設定
-
-デプロイする先の Azure Web App の指定は、`pom.xml`の azure-webapp-maven-plugin の配下に以下の記述を追記して下さい。
-
-```xml
-                    <subscriptionId>7c458c93-920c-4ed1-b26d-5b4ab57c0711</subscriptionId>
-                    <resourceGroup>reading-times</resourceGroup>
-                    <appName>reading-time-app</appName>
-```
-
-お使いの Azure Web App の `subscriptionId` を確認するには、以下のコマンドを実行して下さい：
-
-```shell
-$ az account list
-```
-
-### 認証情報
-
-Azure へのデプロイの際の認証をするためには、 [パスワードベースのサービスプリンシパルを作成する](https://docs.microsoft.com/ja-jp/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#password-based-authentication)必要があります。
-
-そして、リポジトリの設定画面から以下の Secret を設定して下さい。
-
-| Secrets      |                                  |
-| ------------ | -------------------------------- |
-| AZ_USER_NAME | サービスプリンシパルのユーザー名 |
-| AZ_PASSWORD  | サービスプリンシパルのパスワード |
-| AZ_TENANT_ID | サービスプリンシパルの Tenant ID |
-
-## このプロジェクトに貢献する方法
-
-[CONTRIBUTING](.github/CONTRIBUTING.md) ファイルにこのプロジェクトに貢献する方法を記載しています。
-
-## ライセンス
-
-このプロジェクトはMITライセンスの元配布されています。詳細については[LICENSE](LICENSE.md)ファイルを御覧ください。
 

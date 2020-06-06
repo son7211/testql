@@ -33,5 +33,7 @@ public class BookServlet extends HttpServlet {
                    sb.append("인덱스 페이지로 돌아 가기");
                    resp.sendError(HttpStatus.SC_NOT_FOUND, sb.toString());
     }
-
+    private void notFound(HttpServletResponse resp, String errorMessage) throws IOException {
+        resp.sendError(HttpStatus.SC_NOT_FOUND, errorMessage);
+    }	   
 }

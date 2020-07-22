@@ -50,3 +50,10 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
+    
+    
+    - name: Upload SARIF results as artifacts
+      uses: actions/upload-artifact@v2
+      with:
+          name: sarif-results
+          path: /home/runner/work/testql/results/
